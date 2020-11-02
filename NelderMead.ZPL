@@ -149,11 +149,11 @@ FOR i, 1, nVar, 1
 	if(optval(i)==0)
 		step(i)=0.01
 		# or use randomized steps
-		#step(i)=RAND(0.01)*RAND(RAND(1)-0.5)
+		#step(i)=RAND(0.01)*SIGN(RAND(1)-0.5)
 	else
 		step(i)=optval(i)*0.1
 		# or use randomized steps
-		#step(i) = optval(i)*RAND(0.1)*RAND(RAND(1)-0.5)
+		#step(i) = optval(i)*RAND(0.1)*SIGN(RAND(1)-0.5)
 	endif
 	#PRINT "Pm(1,",i,"): ", Pm(1,i), "; step: ", step(i)
 NEXT
