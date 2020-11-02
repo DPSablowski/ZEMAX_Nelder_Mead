@@ -349,7 +349,6 @@ FOR tc, 1, NMIter, 1
 		ys=ys+SQRT((y(i)-ym)*(y(i)-ym))
 	NEXT
 	ys = ys/nVar
-	tc=tc+1
 	Iters=tc
 	if(ys<=sigma)
 		tc=NMiter+1
