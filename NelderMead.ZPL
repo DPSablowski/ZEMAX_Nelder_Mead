@@ -147,9 +147,13 @@ Iters=0
 FOR i, 1, nVar, 1
 	Pm(1,i) = optval(i)
 	if(optval(i)==0)
-		step(i)=RAND(0.01)
+		step(i)=0.01
+		# or use randomized steps
+		#step(i)=RAND(0.01)*RAND(RAND(1)-0.5)
 	else
-		step(i) = optval(i)*RAND(1)
+		step(i)=optval(i)*0.1
+		# or use randomized steps
+		#step(i) = optval(i)*RAND(0.1)*RAND(RAND(1)-0.5)
 	endif
 	#PRINT "Pm(1,",i,"): ", Pm(1,i), "; step: ", step(i)
 NEXT
@@ -345,10 +349,11 @@ FOR tc, 1, NMIter, 1
 		ys=ys+SQRT((y(i)-ym)*(y(i)-ym))
 	NEXT
 	ys = ys/nVar
+	tc=tc+1
+	Iters=tc
 	if(ys<=sigma)
 		tc=NMiter+1
 	endif
-	Iters=tc
 NEXT	# end main loop
 
 # looking for smallest value
